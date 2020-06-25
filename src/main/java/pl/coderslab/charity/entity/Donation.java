@@ -24,7 +24,7 @@ public class Donation {
     private Category category;
 
     @ManyToOne
-    private Donation donation;
+    private Institution institution;
 
     @NotEmpty
     private String street;
