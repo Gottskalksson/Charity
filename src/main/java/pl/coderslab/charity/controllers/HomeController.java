@@ -29,7 +29,13 @@ public class HomeController {
         List<Institution> institutionList = institutionRepository.findAll();
         model.addAttribute("institutionList", institutionList);
 
-        int bagsCount = donationRepository.findAll().size();
+        int donationsCount = donationRepository.findAll().size();
+        model.addAttribute("donationsCount", donationsCount);
+
+        Integer bagsCount = donationRepository.sumQuantity();
+        if (bagsCount == null) {
+            bagsCount = 0;
+        }
         model.addAttribute("bagsCount", bagsCount);
 
         return "index";
