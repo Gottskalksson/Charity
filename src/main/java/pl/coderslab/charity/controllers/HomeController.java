@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.entity.Institution;
+import pl.coderslab.charity.repositories.DonationRepository;
 import pl.coderslab.charity.repositories.InstitutionRepository;
 
 import java.util.List;
@@ -14,16 +15,23 @@ import java.util.List;
 public class HomeController {
 
     private final InstitutionRepository institutionRepository;
+    private final DonationRepository donationRepository;
 
     @Autowired
-    public HomeController(final InstitutionRepository institutionRepository) {
+    public HomeController(final InstitutionRepository institutionRepository, final DonationRepository donationRepository) {
         this.institutionRepository = institutionRepository;
+        this.donationRepository = donationRepository;
     }
 
     @RequestMapping("/")
     public String homeAction(Model model){
+
         List<Institution> institutionList = institutionRepository.findAll();
         model.addAttribute("institutionList", institutionList);
+
+        int bagsCount = donationRepository.findAll().size();
+        model.addAttribute("bagsCount", bagsCount);
+
         return "index";
     }
 }
