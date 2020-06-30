@@ -183,7 +183,7 @@
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <input type="phone" name="phone"/>
+                                Numer telefonu <input id="phoneNumber" type="phone" name="phone"/>
                             </label>
                         </div>
                     </div>
@@ -208,7 +208,7 @@
                 </div>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="button" class="btn next-step">Dalej</button>
+                    <button type="button" class="btn detailsNextStep next-step">Dalej</button>
                 </div>
             </div>
 
