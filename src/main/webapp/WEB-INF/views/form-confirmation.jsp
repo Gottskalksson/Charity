@@ -13,6 +13,13 @@
 
 <jsp:include page="header-form-page.jsp"></jsp:include>
 
+<div class="slogan container container--90">
+    <h2>
+        Dziękujemy za przesłanie formularza Na maila prześlemy wszelkie
+        informacje o odbiorze.
+    </h2>
+</div>
+
 <jsp:include page="footer.jsp"></jsp:include>
 
 <script src="js/app.js"></script>
