@@ -1,3 +1,5 @@
+document.querySelector("form").setAttribute("onsubmit", "return dataChecked();");
+
 document.addEventListener("DOMContentLoaded", function() {
 
   /**
@@ -151,6 +153,61 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.innerText = this.currentStep;
 
       // TODO: Validation
+
+      if (this.currentStep === 3) {
+        var bagsQuantity = document.querySelector("#quantity").value;
+        if (isNaN(bagsQuantity) || bagsQuantity.length === 0) {
+          alert("Podaj prawidłową ilość worków");
+          this.currentStep--;
+          return false;
+        }
+
+      } else if (this.currentStep === 5) {
+        var street = document.querySelector("#street").value;
+        var city = document.querySelector("#city").value;
+        var zipCode = document.querySelector("#zipCode").value;
+        var phoneNumber = document.querySelector("#phoneNumber").value;
+        var pickUpDate = document.querySelector("#pickUpDate").value;
+        var pickUpTime = document.querySelector("#pickUpTime").value;
+
+        if (street.length === 0) {
+          alert("Nazwa ulicy nie może być pusta");
+          this.currentStep--;
+          return false;
+
+        }
+        if (city.length === 0) {
+          alert("Nazwa miasta nie może być pusta");
+          this.currentStep--;
+          return false;
+
+        }
+        if (!(zipCode.match("^\\d{2}[- ]{0,1}\\d{3}$"))) {
+          alert("Nieprawidłowy kod pocztowy");
+          this.currentStep--;
+          return false;
+        }
+
+        if (!(phoneNumber.length === 9)) {
+          alert("Numer telefonu jest nieprawidłowy");
+          this.currentStep--;
+          return false;
+        }
+
+        if (!(pickUpDate.match("([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))"))) {
+          alert("Podaj prawidłową datę zgodnie ze wzorem rok-miesiąc-data (np. 2020-04-30)")
+          this.currentStep--;
+          return false;
+        }
+
+        if (!(pickUpTime.match("^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"))) {
+          alert("Podaj prawidłową godzinę");
+          this.currentStep--;
+          return false;
+        }
+
+      }
+
 
       this.slides.forEach(slide => {
         slide.classList.remove("active");
