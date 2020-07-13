@@ -6,7 +6,7 @@
         <ul class="nav--actions">
             <li class="logged-user">
                 <sec:authorize access="isAuthenticated()">
-                    Witaj <sec:authentication property="username" />
+                    Witaj <sec:authentication property="principal.username"/>
                 </sec:authorize>
                 <ul class="dropdown">
                     <li><a href="#">Profil</a></li>
@@ -22,7 +22,7 @@
         </ul>
 
         <ul>
-            <li><a href="index.html" class="btn btn--without-border active">Start</a></li>
+            <li><a href="/" class="btn btn--without-border active">Start</a></li>
             <li><a href="index.html#steps" class="btn btn--without-border">O co chodzi?</a></li>
             <li><a href="index.html#about-us" class="btn btn--without-border">O nas</a></li>
             <li><a href="index.html#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
