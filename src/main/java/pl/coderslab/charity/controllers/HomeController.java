@@ -1,10 +1,15 @@
 package pl.coderslab.charity.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import pl.coderslab.charity.config.securityService.CurrentUser;
 import pl.coderslab.charity.entity.Institution;
+import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.repositories.DonationRepository;
 import pl.coderslab.charity.repositories.InstitutionRepository;
 
@@ -39,5 +44,12 @@ public class HomeController {
         model.addAttribute("bagsCount", bagsCount);
 
         return "index";
+    }
+
+    @GetMapping("/admin")
+    @ResponseBody
+    public String adminPage(@AuthenticationPrincipal CurrentUser currentUser) {
+        User user = currentUser.getUser();
+        return "Zalogowany jako " + user.getUsername();
     }
 }
