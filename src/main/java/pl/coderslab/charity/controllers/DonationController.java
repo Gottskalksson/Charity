@@ -21,7 +21,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/donations", produces = "text/plain;charset=utf-8")
+@RequestMapping(value = "/user/donations", produces = "text/plain;charset=utf-8")
 public class DonationController {
 
     private final CategoryRepository categoryRepository;
