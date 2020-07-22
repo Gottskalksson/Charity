@@ -15,7 +15,6 @@
 <section class="help">
     <h2>Lista fundacji</h2>
 
-    <!-- SLIDE 1 -->
     <div class="help--slides active" data-id="1">
         <p>Spis fundacji w naszej bazie danych:</p>
 
@@ -30,10 +29,6 @@
                     <a href="/admin/institutions/delete/${institution.id}">Usuń fundację</a>
                 </div>
 
-<%--                <c:if test="${count.count % 2 == 0 && !count.last}">--%>
-<%--            </li>--%>
-<%--            <li>--%>
-<%--                </c:if>--%>
                 </li>
             </c:forEach>
 
@@ -44,7 +39,6 @@
     <a href="/admin/institutions/add"><h1>DODAJ NOWĄ FUNDACJĘ</h1></a>
 </section>
 
-<%--<jsp:include page="footer.jsp"></jsp:include>--%>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/resources/js/app.js"></script>
