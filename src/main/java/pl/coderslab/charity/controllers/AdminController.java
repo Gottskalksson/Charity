@@ -57,10 +57,7 @@ public class AdminController {
 
     @GetMapping("/institutions/delete/{id}")
     public String deleteInstitution(@PathVariable long id) {
-//        Institution institution = institutionRepository.findById(id).orElse(null);
-//        if (id != null) {
             institutionRepository.deleteById(id);
             return "redirect:/admin/institutions";
-//        }
     }
 }
