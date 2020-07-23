@@ -46,10 +46,4 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/admin")
-    @ResponseBody
-    public String adminPage(@AuthenticationPrincipal CurrentUser currentUser) {
-        User user = currentUser.getUser();
-        return "Zalogowany jako " + user.getUsername();
-    }
 }
