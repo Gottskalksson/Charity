@@ -10,20 +10,19 @@ import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.repositories.InstitutionRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
-@RequestMapping(value = "/admin", produces = "text/plain;charset=utf-8")
-public class AdminController {
+@RequestMapping(value = "/admin/institutions", produces = "text/plain;charset=utf-8")
+public class InstitutionController {
 
     private final InstitutionRepository institutionRepository;
 
     @Autowired
-    public AdminController(final InstitutionRepository institutionRepository) {
+    public InstitutionController(final InstitutionRepository institutionRepository) {
         this.institutionRepository = institutionRepository;
     }
 
-    @GetMapping("/institutions")
+    @GetMapping
     public String getInstitutionList (Model model) {
         List<Institution> institutionList = institutionRepository.findAll();
         model.addAttribute("institutionList", institutionList);
@@ -31,13 +30,13 @@ public class AdminController {
         return "institutions";
     }
 
-    @GetMapping("/institutions/add")
+    @GetMapping("/add")
     public String addNewInstitution(Model model) {
         model.addAttribute("institution", new Institution());
         return "form-institution";
     }
 
-    @PostMapping("/institutions/add")
+    @PostMapping("/add")
     public String saveInstitutionDate(@ModelAttribute Institution institution, BindingResult result) {
 
         if (!result.hasErrors()) {
@@ -48,14 +47,14 @@ public class AdminController {
         }
     }
 
-    @GetMapping("/institutions/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String editInstitution (@PathVariable long id, Model model) {
         Institution institution = institutionRepository.findById(id).orElse(new Institution());
         model.addAttribute("institution", institution);
         return "form-institution";
     }
 
-    @GetMapping("/institutions/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteInstitution(@PathVariable long id) {
             institutionRepository.deleteById(id);
             return "redirect:/admin/institutions";
