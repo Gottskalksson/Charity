@@ -15,9 +15,14 @@
 <section class="help">
     <h2>MENU ADMINA</h2>
     <h3>Lista administratorów</h3>
-<c:forEach items="${admins}" var="admin">
-    <p>${admin.username}</p>
-</c:forEach>
+    <c:forEach items="${admins}" var="admin">
+        <div class="form--steps-container">
+            <p>${admin.username}</p>
+            <a href="/admin/edit/${admin.id}">Edytuj</a>
+            <a href="/admin/delete/${admin.id}">Usuń uprawnienia</a>
+        </div>
+    </c:forEach> <br/>
+    <h1><a href="/admin/add">NADAJ UPRAWNIENIA ADMINISTRATORA UŻYTKOWNIKOWI Z BAZY DANYCH</a></h1>
 </section>
 </body>
 </html>
